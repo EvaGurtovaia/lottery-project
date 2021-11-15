@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import LotteryBall from "./LotteryBall";
+import "./Lottery.css";
 
 class Lottery extends Component {
     static defaultProps = {
         title: "Lottery",
-        maxBalls: 6,
-        maxNum: 40,
+        numBalls: 6,
+        maxNums: 40,
     };
     constructor(props) {
         super(props);
-        this.state = { nums: Array.from({ length: this.props.maxBalls }) };
+        this.state = { nums: Array.from({ length: this.props.numBalls }) };
         this.handleClick = this.handleClick.bind(this);
     }
 
     generate() {
         this.setState((curState) => ({
             nums: curState.nums.map(
-                (n) => Math.floor(Math.random() * this.props.maxNum) + 1
+                (n) => Math.floor(Math.random() * this.props.maxNums) + 1
             ),
         }));
     }
